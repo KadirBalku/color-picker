@@ -67,20 +67,24 @@ header {
   margin-bottom: 1rem;
 }
 p {
-  border: 1px solid black;
+  border: 1px solid var(--border-color);
   padding: 1.5rem;
   --text-color: black;
+  --shadow-color: black;
+  --border-color: black;
+  --hover-color: white;
+  --hover-text: black;
   color: var(--text-color);
   background-color: var(--bg-color);
-  box-shadow: 5px 5px black;
+  box-shadow: 5px 5px var(--shadow-color);
   cursor: pointer;
   text-align: center;
   min-width: 200px;
 }
 @media (hover: hover) and (pointer: fine) {
   p:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--hover-color);
+    color: var(--hover-text);
   }
 }
 

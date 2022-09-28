@@ -35,6 +35,20 @@ function setColors() {
   } else {
     document.querySelector("p").style.setProperty("--text-color", "black");
   }
+  if (redSlide.value < 30 && greenSlide.value < 30 && blueSlide.value < 30) {
+    document.querySelector("p").style.setProperty("--border-color", "white");
+    document.querySelector("p").style.setProperty("--shadow-color", "white");
+  } else {
+    document.querySelector("p").style.setProperty("--border-color", "black");
+    document.querySelector("p").style.setProperty("--shadow-color", "black");
+  }
+  if (redSlide.value > 250 && greenSlide.value > 250 && blueSlide.value > 250) {
+    document.querySelector("p").style.setProperty("--hover-color", "black");
+    document.querySelector("p").style.setProperty("--hover-text", "white");
+  } else {
+    document.querySelector("p").style.setProperty("--hover-color", "white");
+    document.querySelector("p").style.setProperty("--hover-text", "black");
+  }
 }
 
 setColors();
