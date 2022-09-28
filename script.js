@@ -40,7 +40,6 @@ redSlide.addEventListener("input", function () {
   let hexColor = "#" + hexRed + "0000";
   redValue = " " + redSlide.value + "";
   header.style.setProperty("--red-thumb", hexColor);
-  g;
   document.querySelector("#red-content").innerText = redValue;
 });
 
