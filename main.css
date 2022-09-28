@@ -77,10 +77,11 @@ p {
   text-align: center;
   min-width: 200px;
 }
-
-p:hover {
-  background-color: white;
-  color: black;
+@media (hover: hover) and (pointer: fine) {
+  p:hover {
+    background-color: white;
+    color: black;
+  }
 }
 
 @media screen and (min-width: 1000px) {
