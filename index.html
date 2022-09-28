@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="input-wrapper">
+        <div class="labeldiv">
+          <div class="label-wrapper">
+            <label for="red">r:</label>
+            <span id="red-content"></span>
+          </div>
+          <input
+            class="red"
+            type="range"
+            id="red"
+            step="1"
+            min="0"
+            max="255"
+            value="255"
+          />
+        </div>
+        <div class="labeldiv">
+          <div class="label-wrapper">
+            <label for="green">g:</label>
+            <span id="green-content"></span>
+          </div>
+          <input
+            class="green"
+            type="range"
+            id="green"
+            step="1"
+            min="0"
+            max="255"
+            value="105"
+          />
+        </div>
+        <div class="labeldiv">
+          <div class="label-wrapper">
+            <label for="blue">b:</label>
+            <span id="blue-content"></span>
+          </div>
+          <input
+            class="blue"
+            type="range"
+            id="blue"
+            step="1"
+            min="0"
+            max="255"
+            value="180"
+          />
+        </div>
+      </div>
+      <p id="hex-color"></p>
+    </header>
+    <script src="script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
