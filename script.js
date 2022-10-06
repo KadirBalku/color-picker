@@ -32,22 +32,44 @@ function setColors() {
     (greenSlide.value < 125 && blueSlide.value < 125)
   ) {
     document.querySelector("p").style.setProperty("--text-color", "white");
+    document.querySelector("button").style.setProperty("--text-color", "white");
   } else {
     document.querySelector("p").style.setProperty("--text-color", "black");
+    document.querySelector("button").style.setProperty("--text-color", "black");
   }
   if (redSlide.value < 30 && greenSlide.value < 30 && blueSlide.value < 30) {
     document.querySelector("p").style.setProperty("--border-color", "white");
     document.querySelector("p").style.setProperty("--shadow-color", "white");
+    document
+      .querySelector("button")
+      .style.setProperty("--border-color", "white");
+    document
+      .querySelector("button")
+      .style.setProperty("--shadow-color", "white");
   } else {
     document.querySelector("p").style.setProperty("--border-color", "black");
     document.querySelector("p").style.setProperty("--shadow-color", "black");
+    document
+      .querySelector("button")
+      .style.setProperty("--border-color", "black");
+    document
+      .querySelector("button")
+      .style.setProperty("--shadow-color", "black");
   }
   if (redSlide.value > 250 && greenSlide.value > 250 && blueSlide.value > 250) {
     document.querySelector("p").style.setProperty("--hover-color", "black");
     document.querySelector("p").style.setProperty("--hover-text", "white");
+    document
+      .querySelector("button")
+      .style.setProperty("--hover-color", "black");
+    document.querySelector("button").style.setProperty("--hover-text", "white");
   } else {
     document.querySelector("p").style.setProperty("--hover-color", "white");
     document.querySelector("p").style.setProperty("--hover-text", "black");
+    document
+      .querySelector("button")
+      .style.setProperty("--hover-color", "white");
+    document.querySelector("button").style.setProperty("--hover-text", "black");
   }
 }
 
@@ -90,3 +112,25 @@ document.querySelector("#hex-color").addEventListener("click", function () {
     title: "copied " + hexColor + " to clipboard.",
   });
 });
+
+const quoteUrl = "https://dummy-apis.netlify.app/api/color";
+
+function randomColor() {
+  let p = fetch(quoteUrl);
+
+  p.then((response) => {
+    return response.json();
+  }).then((apiItem) => {
+    const r = apiItem.rgb.r;
+    const g = apiItem.rgb.g;
+    const b = apiItem.rgb.b;
+    redSlide.value = r;
+    greenSlide.value = g;
+    blueSlide.value = b;
+    setColors();
+  });
+}
+
+const btn = document.body.querySelector("#random-color");
+
+btn.addEventListener("click", randomColor);

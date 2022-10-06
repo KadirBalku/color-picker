@@ -49,6 +49,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: min-content;
 }
 
 .labeldiv {
@@ -63,12 +64,12 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 224px;
   margin-bottom: 1rem;
 }
-p {
+
+.button {
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
+  padding: 1rem;
   --text-color: black;
   --shadow-color: black;
   --border-color: black;
@@ -80,54 +81,36 @@ p {
   cursor: pointer;
   text-align: center;
   min-width: 200px;
+  max-width: 200px;
 }
+
+button {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.button + .button {
+  margin-top: 2rem;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  p:hover {
+  .button:hover {
     background-color: var(--hover-color);
     color: var(--hover-text);
   }
 }
 
-@media screen and (min-width: 1000px) {
-  .label-wrapper {
-    min-width: 350px;
-  }
-}
-
-@media screen and (min-width: 1235px) {
+@media screen and (min-width: 1460px) {
   header {
     flex-direction: row;
     align-items: center;
     gap: 2rem;
   }
-
+  .button + .button {
+    margin-top: 0rem;
+  }
   .input-wrapper {
     flex-direction: row;
-  }
-  .label-wrapper {
-    min-width: 200px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .label-wrapper {
-    min-width: 260px;
-  }
-}
-@media screen and (min-width: 1600px) {
-  .label-wrapper {
-    min-width: 320px;
-  }
-}
-
-@media screen and (min-width: 1800px) {
-  .label-wrapper {
-    min-width: 380px;
-  }
-}
-@media screen and (min-width: 2050px) {
-  .label-wrapper {
-    min-width: 450px;
   }
 }
 
@@ -288,13 +271,13 @@ span::after {
   content: " )";
 }
 
-@media screen and (min-width: 1235px) {
+@media screen and (min-width: 1460px) {
   #hex-color {
     margin-left: auto;
   }
 }
 
-@media screen and (max-width: 1235px) {
+@media screen and (max-width: 1460px) {
   #hex-color {
     margin-top: 6rem;
   }
