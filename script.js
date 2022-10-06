@@ -26,6 +26,13 @@ function setColors() {
   let hexColor = "#" + hexRed + hexGreen + hexBlue;
   document.querySelector("#hex-color").innerText = hexColor;
   document.body.style.setProperty("--bg-color", hexColor);
+  header.style.setProperty("--blue-thumb", "rgb(0,0," + blueSlide.value + ")");
+  header.style.setProperty(
+    "--green-thumb",
+    "rgb(0," + greenSlide.value + ",0)"
+  );
+  header.style.setProperty("--red-thumb", "rgb(" + redSlide.value + ",0,0)");
+
   if (
     (redSlide.value < 125 && greenSlide.value < 125) ||
     (redSlide.value < 125 && blueSlide.value < 125) ||
@@ -75,30 +82,6 @@ function setColors() {
 
 setColors();
 document.body.addEventListener("input", setColors);
-
-redSlide.addEventListener("input", function () {
-  hexRed = ("0" + Number(redSlide.value).toString(16)).substr(-2);
-  let hexColor = "#" + hexRed + "0000";
-  redValue = " " + redSlide.value + "";
-  header.style.setProperty("--red-thumb", hexColor);
-  document.querySelector("#red-content").innerText = redValue;
-});
-
-greenSlide.addEventListener("input", function () {
-  hexGreen = ("0" + Number(greenSlide.value).toString(16)).substr(-2);
-  let hexColor = "#00" + hexGreen + "00";
-  greenValue = " " + greenSlide.value + "";
-  header.style.setProperty("--green-thumb", hexColor);
-  document.querySelector("#green-content").innerText = greenValue;
-});
-
-blueSlide.addEventListener("input", function () {
-  hexBlue = ("0" + Number(blueSlide.value).toString(16)).substr(-2);
-  let hexColor = "#0000" + hexBlue;
-  blueValue = " " + blueSlide.value + "";
-  header.style.setProperty("--blue-thumb", hexColor);
-  document.querySelector("#blue-content").innerText = blueValue;
-});
 
 document.querySelector("#hex-color").addEventListener("click", function () {
   let hexColor = document.getElementById("hex-color").innerText;
