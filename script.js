@@ -3,36 +3,44 @@ const redSlide = document.querySelector("#red");
 const greenSlide = document.querySelector("#green");
 const blueSlide = document.querySelector("#blue");
 const header = document.querySelector("header");
-let redValue = " " + redSlide.value + "";
-let greenValue = " " + greenSlide.value + "";
-let blueValue = " " + blueSlide.value + "";
-let hexRed = ("0" + Number(redSlide.value).toString(16)).substr(-2);
-let hexGreen = ("0" + Number(greenSlide.value).toString(16)).substr(-2);
-let hexBlue = ("0" + Number(blueSlide.value).toString(16)).substr(-2);
+const quoteUrl = "https://dummy-apis.netlify.app/api/color";
+const btn = document.body.querySelector("#random-color");
 
-//run on page start up for shown default values
-header.style.setProperty("--red-content", redSlide.value);
-document.querySelector("#red-content").innerText = redValue;
-document.querySelector("#green-content").innerText = greenValue;
-document.querySelector("#blue-content").innerText = blueValue;
-header.style.setProperty("--red-thumb", "#" + hexRed + "0000");
-header.style.setProperty("--green-thumb", "#00" + hexGreen + "00");
-header.style.setProperty("--blue-thumb", "#0000" + hexBlue);
+//eventlistener for slider movement and random button
+btn.addEventListener("click", randomColor);
+document.body.addEventListener("input", setColors);
+
+//initial call of main function so colors displayed correctly at page start
+setColors();
 
 function setColors() {
-  hexRed = ("0" + Number(redSlide.value).toString(16)).substr(-2);
-  hexGreen = ("0" + Number(greenSlide.value).toString(16)).substr(-2);
-  hexBlue = ("0" + Number(blueSlide.value).toString(16)).substr(-2);
+  //required variables
+  let hexRed = ("0" + Number(redSlide.value).toString(16)).substr(-2);
+  let hexGreen = ("0" + Number(greenSlide.value).toString(16)).substr(-2);
+  let hexBlue = ("0" + Number(blueSlide.value).toString(16)).substr(-2);
   let hexColor = "#" + hexRed + hexGreen + hexBlue;
+  let redValue = " " + redSlide.value + "";
+  let greenValue = " " + greenSlide.value + "";
+  let blueValue = " " + blueSlide.value + "";
+
+  //setting background color of body and changing hex value in copy button
   document.querySelector("#hex-color").innerText = hexColor;
   document.body.style.setProperty("--bg-color", hexColor);
+
+  //setting thumb colors of the sliders
   header.style.setProperty("--blue-thumb", "rgb(0,0," + blueSlide.value + ")");
+  document.querySelector("#blue-content").innerText = blueValue;
+
   header.style.setProperty(
     "--green-thumb",
     "rgb(0," + greenSlide.value + ",0)"
   );
-  header.style.setProperty("--red-thumb", "rgb(" + redSlide.value + ",0,0)");
+  document.querySelector("#green-content").innerText = greenValue;
 
+  header.style.setProperty("--red-thumb", "rgb(" + redSlide.value + ",0,0)");
+  document.querySelector("#red-content").innerText = redValue;
+
+  //changing font and general colors of buttons to white or black depanding on mixed color
   if (
     (redSlide.value < 125 && greenSlide.value < 125) ||
     (redSlide.value < 125 && blueSlide.value < 125) ||
@@ -80,9 +88,7 @@ function setColors() {
   }
 }
 
-setColors();
-document.body.addEventListener("input", setColors);
-
+//event listener for hex value button to copy the hexcode
 document.querySelector("#hex-color").addEventListener("click", function () {
   let hexColor = document.getElementById("hex-color").innerText;
   navigator.clipboard.writeText(hexColor);
@@ -96,8 +102,7 @@ document.querySelector("#hex-color").addEventListener("click", function () {
   });
 });
 
-const quoteUrl = "https://dummy-apis.netlify.app/api/color";
-
+//fetch api data to randomize sliders
 function randomColor() {
   let p = fetch(quoteUrl);
 
@@ -113,7 +118,3 @@ function randomColor() {
     setColors();
   });
 }
-
-const btn = document.body.querySelector("#random-color");
-
-btn.addEventListener("click", randomColor);
